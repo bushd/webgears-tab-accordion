@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Webgears Demo: Responsive Tab-Accordion</title>
+
+    <style>
+        ul, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 0;
+        }
+
+        p, h2 {
+            margin: 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            font-size: .8rem;
+            margin: 20px;
+        }
+
+        .tab-accordion {
+            display: block;
+        }
+
+        .tab-accordion .tablist {
+            display: none;
+        }
+
+         .tab-accordion .tablist .tab {
+             display: inline-block;
+             border-top: 1px solid black;
+             border-right: 1px solid black;
+             border-bottom: 1px solid black;
+             padding: 10px;
+             margin: 0px;
+             font-size: 1.25rem;
+             font-weight: bold;
+             background-color: #ccc;
+         }
+
+        .tab-accordion .tablist .tab:first-child {
+            border-left: 1px solid black;
+        }
+
+        .tab-accordion .tablist .tab.active {
+            border-bottom: 1px solid white;
+            background-color: transparent;
+        }
+
+        .tab-accordion .content {
+            display: none;
+            padding: 0 10px;
+        }
+
+        .tab-accordion article[name].active {
+            border: 1px solid black;
+            margin-top: -1px;
+        }
+
+        .tab-accordion article[name].active .content{
+            display: block;
+        }
+
+        .tab-accordion header h2 {
+            font-size: 1.25rem;
+            padding: 0 10px;
+        }
+
+        .tab-accordion article header {
+            border: 1px solid black;
+            margin-top: -1px;
+            background-color: #ccc;
+        }
+
+        .tab-accordion article.active header {
+            border: 0px solid transparent;
+            margin-top: 0;
+            background-color: transparent;
+        }
+
+        @media (min-width: 768px) {
+
+            .tab-accordion .tablist {
+                display: block;
+            }
+
+            .tab-accordion header {
+                display: none;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Webgears Demo</h1>
+        <h2>Responsive Tab-Accordion</h2>
+    </header>
+    <main>
+        <h3>Introduction</h3>
+        <p>
+            These demos show a "component" that can be reused on the website. It is <strong>not</strong> a <em>web component</em>, but reusable html markup and matching css.<br/>
+            For simplicity the style is embedded in this html.<br/>The markup and css is a <em>proof of concept</em> only, but it can easily adjusted.
+        </p>
+        <p>
+            First of, there is <strong>no</strong> semantically correct CSS-only way to do this. <em>Only hacks!</em> That means, we either do stuff that should be a no go, or we violate UX&mdash;or worse: both.<br/>
+            As conclusion, this means, there is no way we ever should use a CSS-only version in any product.
+        </p>
+        <p>
+            Using select element of type <em>radio</em>:<br/>
+            This violates semantics, because a from element would be used outside a form, although we can do this, we need do hide the element which robs it of its actual purpose, and whats with browsers that ignore css? There it would make even less sense! Yet this is still the "best" solution&mdash;at least without JavaScript.<br/>
+            Using labels with the for-attribute on IDs of input fields also pollutes the global namespace of JavaScript.
+        </p>
+        <p>
+            Using <em>:target</em> pseudo selector:<br/>
+            Besides being forced to use IDs, because the :target pseudo selectors ignores anchor points based on name attributes, we also need to drop some basic values of UX: like jumping to an anchor and&mdash;depending on the markup&mdash;tab highlighting. We would also force a specific history behaviour on our component$mdash;something we might not want to.<br/>
+            Being forces to use IDs does not seem like a disadvantage, but it actually pollutes the global namespace in JavaScript.
+        </p>
+        <p>
+            Therefore there simply is no <strong>practical</strong> solution of this exercise without JavaScript.
+        </p>
+
+        <h3>Demos</h3>
+
+        <a href="css-demo.html">CSS-only Version</a><br/>
+        <a href="js-demo.html">JS  Enhanced Version</a>
+
+    </main>
+    <footer>
+        Copyright © 2015 Bastian Brodbeck
+    </footer>
+
+    <script>
+        (function() {
+            // use event delegation to reduce number of EventListeners
+            var matchesSelector = document.body.matchesSelector || document.body.webkitMatchesSelector || document.body.mozMatchesSelector || document.body.msMatchesSelector || document.body.webkitMatchesSelector || document.body.matchesSelector
+            document.getElementsByTagName('body')[0].addEventListener('click', function(event) {
+                if (matchesSelector.apply(event.target, ['[data-target]'])) {
+                    var target = event.target.getAttribute('data-target'); //we know we have this attribute
+                    document.querySelector('.tab-accordion article.active').classList.remove('active');
+                    document.querySelector('.tab-accordion .tab.active').classList.remove('active');
+                    document.querySelector('.tab-accordion [name="'+target+'"]').classList.add('active');
+                    document.querySelector('.tab-accordion .tab[data-target="'+target+'"]').classList.add('active');
+                }
+            })
+        })();
+    </script>
+</body>
+</html>

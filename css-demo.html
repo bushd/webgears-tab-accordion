@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Webgears Demo: Responsive Tab-Accordion</title>
+
+    <style>
+        ul, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 0;
+        }
+
+        p, h2 {
+            margin: 10px 0;
+        }
+
+        footer {
+            text-align: center;
+            font-size: .8rem;
+            margin: 20px;
+        }
+
+        .tab-accordion {
+            display: block;
+        }
+
+        .tab-accordion .content {
+            display: none;
+            padding: 0 10px;
+        }
+
+        .tab-accordion [type="radio"]:checked ~ .content {
+            border: 1px solid black;
+            display: block;
+            float: left;
+            background-color: white;
+        }
+
+        .tab-accordion label span {
+            font-size: 1.25rem;
+            padding: 0 10px;
+            background-color: #ccc;
+        }
+
+        .tab-accordion [type="radio"] {
+            display: none;
+        }
+
+        .tab-accordion label span {
+            border-top: 1px solid black;
+            border-right: 1px solid black;
+            border-left: 1px solid black;
+        }
+
+        .tab-accordion [type="radio"]:checked ~ span {
+            margin-top: 0;
+            background-color: white;
+           border-bottom: 1px solid white;
+        }
+
+        @media (max-width: 768px) {
+
+            .tab-accordion {
+                border-bottom: 1px solid black;
+            }
+
+            .tab-accordion [type="radio"]:checked ~ .content {
+                float: none;
+            }
+
+            .tab-accordion label span {
+                display: block;
+            }
+
+            .tab-accordion [type="radio"]:checked ~ .content {
+                border-top: 1px solid white;
+                display: block;
+                float: left;
+            }
+
+
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Webgears Demo</h1>
+        <h2>Responsive Tab-Accordion</h2>
+    </header>
+    <main>
+        <h3>CSS-only Demo</h3>
+        <p>
+            This demo shows a CSS-only version with radioboxes. This hack feels wrong and semantically incorrect&mdash;especially in the html5 semantic-driven world. Yet it works.
+        </p>
+
+        <section class="tab-accordion">
+            <label for="tab1">
+                <input type="radio" id="tab1" name="tab-group" checked/>
+
+                <span>Werther</span>
+
+                <div class="content">
+                    <p>
+                        Eine wunderbare Heiterkeit hat meine ganze Seele eingenommen, gleich den süßen Frühlingsmorgen, die ich mit ganzem Herzen genieße. Ich bin allein und freue mich meines Lebens in dieser Gegend, die für solche Seelen geschaffen ist wie die meine. Ich bin so glücklich, mein Bester, so ganz in dem Gefühle von ruhigem Dasein versunken, daß meine Kunst darunter leidet. Ich könnte jetzt nicht zeichnen, nicht einen Strich, und bin nie ein größerer Maler gewesen als in diesen Augenblicken. Wenn das liebe Tal um mich dampft, und die hohe Sonne an der Oberfläche der undurchdringlichen Finsternis meines Waldes ruht, und nur einzelne Strahlen sich in das innere Heiligtum stehlen, ich dann im hohen Grase am fallenden Bache liege, und näher an der Erde tausend mannigfaltige Gräschen mir merkwürdig werden; wenn ich das Wimmeln der kleinen Welt zwischen Halmen, die unzähligen, unergründlichen Gestalten der Würmchen, der Mückchen näher an meinem Herzen fühle, und fühle die Gegenwart des Allmächtigen, der uns nach seinem Bilde schuf, das Wehen des Alliebenden, der uns in ewiger Wonne schwebend trägt und erhält; mein Freund!
+                    </p>
+                </div>
+            </label>
+
+            <label for="tab2">
+                <input type="radio" id="tab2" name="tab-group" />
+
+                <span>Er hörte leise...</span>
+
+                <div class="content">
+                    <p>
+                        Er hörte leise Schritte hinter sich. Das bedeutete nichts Gutes. Wer würde ihm schon folgen, spät in der Nacht und dazu noch in dieser engen Gasse mitten im übel beleumundeten Hafenviertel? Gerade jetzt, wo er das Ding seines Lebens gedreht hatte und mit der Beute verschwinden wollte! Hatte einer seiner zahllosen Kollegen dieselbe Idee gehabt, ihn beobachtet und abgewartet, um ihn nun um die Früchte seiner Arbeit zu erleichtern? Oder gehörten die Schritte hinter ihm zu einem der unzähligen Gesetzeshüter dieser Stadt, und die stählerne Acht um seine Handgelenke würde gleich zuschnappen? Er konnte die Aufforderung stehen zu bleiben schon hören. Gehetzt sah er sich um. Plötzlich erblickte er den schmalen Durchgang. Blitzartig drehte er sich nach rechts und verschwand zwischen den beiden Gebäuden. Beinahe wäre er dabei über den umgestürzten Mülleimer gefallen, der mitten im Weg lag. Er versuchte, sich in der Dunkelheit seinen Weg zu ertasten und erstarrte: Anscheinend gab es keinen anderen Ausweg aus diesem kleinen Hof als den Durchgang, durch den er gekommen war. Die Schritte wurden lauter und lauter, er sah eine dunkle Gestalt um die Ecke biegen. Fieberhaft irrten seine Augen durch die nächtliche Dunkelheit und suchten einen Ausweg.
+                    </p>
+                </div>
+            </label>
+
+            <label for="tab3">
+                <input type="radio" id="tab3" name="tab-group" />
+
+                <span>Webstandard</span>
+
+                <div class="content">
+                    <p>
+                        Überall dieselbe alte Leier. Das Layout ist fertig, der Text lässt auf sich warten. Damit das Layout nun nicht nackt im Raume steht und sich klein und leer vorkommt, springe ich ein: der Blindtext. Genau zu diesem Zwecke erschaffen, immer im Schatten meines großen Bruders »Lorem Ipsum«, freue ich mich jedes Mal, wenn Sie ein paar Zeilen lesen. Denn esse est percipi - Sein ist wahrgenommen werden.
+                    </p><p>
+                        Und weil Sie nun schon die Güte haben, mich ein paar weitere Sätze lang zu begleiten, möchte ich diese Gelegenheit nutzen, Ihnen nicht nur als Lückenfüller zu dienen, sondern auf etwas hinzuweisen, das es ebenso verdient wahrgenommen zu werden: Webstandards nämlich. Sehen Sie, Webstandards sind das Regelwerk, auf dem Webseiten aufbauen. So gibt es Regeln für HTML, CSS, JavaScript oder auch XML; Worte, die Sie vielleicht schon einmal von Ihrem Entwickler gehört haben. Diese Standards sorgen dafür, dass alle Beteiligten aus einer Webseite den größten Nutzen ziehen. Im Gegensatz zu früheren Webseiten müssen wir zum Beispiel nicht mehr zwei verschiedene Webseiten für den Internet Explorer und einen anderen Browser programmieren.
+                    </p>
+                </div>
+            </label>
+        </section>
+
+        <p><a href="index.html">Back to Index</a></p>
+    </main>
+    <footer>
+        Copyright © 2015 Bastian Brodbeck
+    </footer>
+</body>
+</html>

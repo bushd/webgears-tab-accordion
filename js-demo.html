@@ -101,32 +101,13 @@
         <h2>Responsive Tab-Accordion</h2>
     </header>
     <main>
-        <h3>Introduction</h3>
+        <h3>JavaScript Enhanced Demo</h3>
         <p>
-            This demo shows a "component" that can be reused on the website. It is <strong>not</strong> a <em>web component</em>, but reusable html markup and matching css.<br/>
-            For simplicity the style is embedded in this html.<br/>The markup and css is a <em>proof of concept</em> only, but it can easily adjusted.
-        </p>
-        <p>
-            First of, there is <strong>no</strong> semantically correct CSS-only way to do this. <em>Only hacks!</em> That means, we either do stuff that should be a no go, or we violate UX&mdash;or worse: both.<br/>
-            As conclusion, this means, there is no way we ever should use a CSS-only version in any product.
-        </p>
-        <p>
-            Using select element of type <em>radio</em>:<br/>
-            This violates semantics, because a from element would be used outside a form, although we can do this, we need do hide the element which robs it of its actual purpose, and whats with browsers that ignore css? There it would make even less sense! Yet this is still the "best" solution&mdash;at least without JavaScript.<br/>
-            If we want this solution to morph into an accordion for small screens, we either need to use absolute positioning with several obvious disadvantages or we duplicate code&mdash;another thing we actually should avoid.
-        </p>
-        <p>
-            Using <em>:target</em> pseudo selector:<br/>
-            Besides being forced to use IDs, because the :target pseudo selectors ignores anchor points based on name attributes, we also need to drop some basic values of UX: like jumping to an anchor and&mdash;depending on the markup&mdash;tab highlighting. We would also force a specific history behaviour on our component$mdash;something we might not want to.<br/>
-            Being forces to use IDs does not seem like a disadvantage, but it actually pollutes the global namespace in JavaScript.
-        </p>
-        <p>
-            Therefore there simply is no <strong>practical</strong> solution of this exercise without JavaScript.
+            This demo shows a javaScript enhanced version with more accurate semantics&mdash;yet with code duplication. JavaScript written to not pollute global namespace, no IDs used.
         </p>
 
-        <h3>Demo</h3>
 
-        <section id="proof-of-concept" class="tab-accordion">
+        <section class="tab-accordion">
 
             <!-- semantics dictates: navigational elements like tabs should be together in a list -->
             <div class="tablist">
@@ -171,8 +152,9 @@
                     </p>
                 </div>
             </article>
-
         </section>
+
+        <p><a href="index.html">Back to Index</a></p>
     </main>
     <footer>
         Copyright © 2015 Bastian Brodbeck
